@@ -1,0 +1,19 @@
+{
+  "name": "hl7-helper",
+  "version": "0.0.1",
+  "description": "Sample application to parse and create HL7 ER7 format files",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "@redoxengine/redox-hl7-v2": "^1.0.1"
+  }
+}
