@@ -60,4 +60,4 @@ function mapOBXMessage(obxMessage) {
     }
 }
 
-parseHl7()
+module.exports = parseHl7;
