@@ -16,4 +16,10 @@ const ADT_A01 = {
 const hl7v2 = require("@redoxengine/redox-hl7-v2");
 const generator = new hl7v2.Generator();
 const data = generator.write(ADT_A01);
-console.log(data);
+
+// Export generated message to the file
+const fs = require("fs");
+
+const writeStream = fs.createWriteStream("hl7_message.txt");
+writeStream.write(data);
+writeStream.end();

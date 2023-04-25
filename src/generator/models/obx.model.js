@@ -6,9 +6,13 @@ const OBX_MODEL = {
   OBSERVATION_IDENTIFIER: {
     ID: "OBX-REPORT",
   },
+  VALUE_TYPE: "ED",
   OBSERVATION_VALUE: [
     {
-      1: base64Stringdata,
+      1: "Application",
+      2: "pdf",
+      4: "Base64",
+      5: base64Stringdata,
     },
   ],
   OBSERVATION_RESULT_STATUS: "S", //partial results
