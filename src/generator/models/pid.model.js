@@ -2,7 +2,11 @@ const PID_MODEL = {
   NAME: "PID",
   PATIENT_ID: "PID-1",
   PATIENT_NAME: {
-    FAMILY_NAME: "",
+    FAMILY_NAME: {
+      // can contain multiple surname
+      1: "Evans",
+      2: "Sharma",
+    },
     FIRST_NAME: "Chris",
     TYPE_CODE: "B", //birth name
   },
