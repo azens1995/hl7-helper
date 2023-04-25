@@ -1,8 +1,8 @@
 const path = require('path');
 const Hl7Parser = require("./utils/parser");
-const MSHMapper = require("./constants/msh.constant");
-const PIDMapper = require("./constants/pid.constant");
-const OBXMapper = require("./constants/obx.constant")
+const MSHMapper = require("./fields/msh.field");
+const PIDMapper = require("./fields/pid.field");
+const OBXMapper = require("./fields/obx.field")
 
 function parseHl7() {
     const sampleFilePath = path.join(__dirname, "./../../Hl7Samples/ADT_AO1.txt");

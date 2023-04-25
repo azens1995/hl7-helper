@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const OBXMapper = require("../constants/obx.constant")
+const OBXMapper = require("../fields/obx.field")
 const Hl7Parser = require('../utils/parser');
 
 function reportExtraction() {
