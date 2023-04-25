@@ -21,6 +21,17 @@ class Hl7Parser {
         return decodedMessage;
     }
 
+    parseUsingRedoxHl7() {
+        if(!this.#checkIfFileExist()) {
+            throw new Error("FIle not found.")
+        }
+        
+        const hl7Message = fs.readFileSync(this.#filePath, 'utf-8');
+        const parser = new hl7v2.Parser();
+        const decodedMessage = parser.parse(hl7Message);
+        return decodedMessage;
+    }
+
     #checkIfFileExist() {
         if(!this.#filePath) {
             return false

@@ -24,7 +24,6 @@ function parseHl7() {
     console.log(JSON.stringify(decodedMessage, null, 2))
     return decodedMessage;
 
-    
     //save patient and message information
     //await Patient.create(patientInfo)
     //await Information.create(messageHeaderInfo)
@@ -107,3 +106,4 @@ function mapPatientResponseInfo(patientInfo) {
 }
 
 module.exports = parseHl7
+
