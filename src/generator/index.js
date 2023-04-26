@@ -20,6 +20,6 @@ const data = generator.write(ADT_A01);
 // Export generated message to the file
 const fs = require("fs");
 
-const writeStream = fs.createWriteStream("hl7_message.txt");
+const writeStream = fs.createWriteStream("results/hl7_message.txt");
 writeStream.write(data);
 writeStream.end();
