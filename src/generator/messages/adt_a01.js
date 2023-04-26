@@ -5,6 +5,8 @@ const { EVN_SEGMENT } = require("../segments/evn.segment");
 const { OBX_SEGMENT } = require("../segments/obx.segment");
 
 // Admit a patient
+// Reference document for the ADT_A01:
+// https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/ADT_A01
 const ADT_A01 = {
   MSH: MSH_SEGMENT,
   PID: PID_SEGMENT,
