@@ -1,6 +1,6 @@
 const PID_MODEL = {
   NAME: "PID",
-  PATIENT_ID: "PID-1",
+  PATIENT_ID: "1",
   PATIENT_NAME: {
     FAMILY_NAME: {
       1: "Evans",
