@@ -1,4 +1,5 @@
 const {
+  OBX_ID,
   VALUE_TYPE,
   OBSERVATION_VALUE,
   OBSERVATION_IDENTIFIER,
@@ -8,6 +9,7 @@ const {
 const { OBX_MODEL } = require("../models/obx.model");
 
 const OBX_SEGMENT = {
+  [OBX_ID]: OBX_MODEL.OBX_ID,
   [OBSERVATION_IDENTIFIER]: {
     [_OBSERVATION_IDENTIFIER]: OBX_MODEL.OBSERVATION_IDENTIFIER.ID,
   },

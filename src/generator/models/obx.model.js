@@ -3,6 +3,7 @@ const { base64String } = require("../utils/pdf_to_base64string");
 const base64Stringdata = base64String();
 
 const OBX_MODEL = {
+  OBX_ID: "1",
   OBSERVATION_IDENTIFIER: {
     ID: "OBX-REPORT",
   },

@@ -1,4 +1,5 @@
 const PV1_MODEL = {
+  PATIENT_VISIT_ID: "1",
   PATIENT_CLASS: "U", //unknown
   ASSIGNED_PATIENT_LOCATION: {
     POINT_OF_CARE: "XP-3",
