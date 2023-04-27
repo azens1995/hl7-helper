@@ -20,41 +20,44 @@ const {
   PATIENT_SEGMENT_NAME,
   PATIENT_IDENTIFIER_LIST,
 } = require("../constants/patientIdentification");
-const { PID_MODEL } = require("../models/pid.model");
+const { SEGMENT } = require("../constants/segment");
+const { PATIENT } = require("../models/patient.model");
 
 const PID_SEGMENT = {
-  [PATIENT_SEGMENT_NAME]: PID_MODEL.NAME,
-  [PATIENT_ID]: PID_MODEL.PATIENT_ID,
+  [PATIENT_SEGMENT_NAME]: SEGMENT.PID,
+  [PATIENT_ID]: PATIENT.patientId,
   [PATIENT_NAME]: [
     {
-      [_FAMILY_NAME]: PID_MODEL.PATIENT_NAME.FAMILY_NAME,
-      [_FIRST_NAME]: PID_MODEL.PATIENT_NAME.FIRST_NAME,
-      [_NAME_TYPE_CODE]: PID_MODEL.PATIENT_NAME.TYPE_CODE,
+      [_FAMILY_NAME]: {
+        1: PATIENT.lastName,
+      },
+      [_FIRST_NAME]: PATIENT.firstName,
+      [_NAME_TYPE_CODE]: PATIENT.nameTypeCode,
     },
   ],
   [PATIENT_IDENTIFIER_LIST]: [
     {
-      [_PID_LIST_ID]: PID_MODEL.PATIENT_IDENTIFIER_LIST.ID,
-      [_PID_LIST_TYPE_CODE]: PID_MODEL.PATIENT_IDENTIFIER_LIST.ID_TYPE_CODE,
+      [_PID_LIST_ID]: PATIENT.identifierList.id,
+      [_PID_LIST_TYPE_CODE]: PATIENT.identifierList.idTypeCode,
     },
   ],
   [DOB]: {
-    [_DOB]: PID_MODEL.DATE_OF_BIRTH.DATE_TIME,
+    [_DOB]: PATIENT.dob.split("-").join("") + PATIENT.dot.split(":").join(""),
   },
   [PHONENUMBER]: [
     {
-      [_COUNTRY_CODE]: PID_MODEL.PHONENUMBER.COUNTRY_CODE,
-      [_LOCAL_NUMBER]: PID_MODEL.PHONENUMBER.LOCAL_NUMBER,
+      [_COUNTRY_CODE]: PATIENT.phoneNumber.split(" ")[0],
+      [_LOCAL_NUMBER]: PATIENT.phoneNumber.split(" ")[1],
     },
   ],
   [MARITAL_STATUS]: {
-    [_MARITAL_STATUS]: PID_MODEL.MARITAL_STATUS.IDENTIFIER,
+    [_MARITAL_STATUS]: PATIENT.maritalStatus,
   },
-  [SEX]: PID_MODEL.SEX,
+  [SEX]: PATIENT.sex,
   [ADDRESS]: [
     {
-      [_CITY]: PID_MODEL.ADDRESS.CITY,
-      [_COUNTRY]: PID_MODEL.ADDRESS.COUNTRY,
+      [_CITY]: PATIENT.address.city,
+      [_COUNTRY]: PATIENT.address.country,
     },
   ],
 };
