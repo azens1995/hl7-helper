@@ -1,19 +1,19 @@
 const path = require('path');
 const Hl7Parser = require("./utils/parser");
 
-// function parseUsingRedoxHl7() {
-//     const sampleFilePath = path.join(__dirname, "./../../Hl7Samples/ADT_AO1.txt");
-//     const parser = new Hl7Parser(sampleFilePath);
-//     const decodedMessage = parser.parseUsingRedoxHl7();
-//     const mshInfo = mapMSH(decodedMessage.MSH);
-//     const patientInfo = mapPID(decodedMessage.PID)
-//     console.log(JSON.stringify(decodedMessage, null, 2))
-//     return decodedMessage
+function parseUsingRedoxHl7() {
+    const sampleFilePath = path.join(__dirname, "./../../Hl7Samples/ADT_AO1.txt");
+    const parser = new Hl7Parser(sampleFilePath);
+    const decodedMessage = parser.parseUsingRedoxHl7();
+    const mshInfo = mapMSH(decodedMessage.MSH);
+    const patientInfo = mapPID(decodedMessage.PID)
+    console.log(JSON.stringify(decodedMessage, null, 2))
+    return decodedMessage
 
-//     //save patient and message information
-//     //await Patient.create(patientInfo)
-//     //await Information.create(messageHeaderInfo)
-// }
+    //save patient and message information
+    //await Patient.create(patientInfo)
+    //await Information.create(messageHeaderInfo)
+}
 
 function parseHl7() {
     const sampleFilePath = path.join(__dirname, "./../../Hl7Samples/ADT_AO1.txt");
