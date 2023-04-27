@@ -25,6 +25,7 @@ const _MESSAGE_STRUCTURE = 3;
 
 const MESSAGE = {
   ADT_A01: "ADT_A01",
+  ORU_R01: "ORU_R01",
   FIELD_SEPARATOR: "|",
   ENCODING_CHARACTERS: "^~\\&",
   SENDING_APP: "EVOKE",
@@ -33,10 +34,12 @@ const MESSAGE = {
   MESSAGE_CODE: {
     ADT: "ADT",
     ACK: "ACK",
+    ORU: "ORU",
   },
   TRIGGER_EVENT: {
     A01: "A01",
     A02: "A02",
+    R01: "R01",
   },
   MESSAGE_CONTROL_ID: "MID-66",
   PROCESSING_ID: {

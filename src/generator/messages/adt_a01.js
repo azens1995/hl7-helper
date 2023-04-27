@@ -1,4 +1,4 @@
-const { MSH_SEGMENT } = require("../segments/msh.segment");
+const { MSH_SEGMENT } = require("../segments/msh.segment1");
 const { PID_SEGMENT } = require("../segments/pid.segment");
 const { PV1_SEGMENT } = require("../segments/pv1.segment");
 const { EVN_SEGMENT } = require("../segments/evn.segment");
