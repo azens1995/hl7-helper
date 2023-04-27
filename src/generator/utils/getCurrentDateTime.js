@@ -6,7 +6,7 @@ const getDateTime = () => {
   const today = new Date();
 
   const year = format(today.getFullYear());
-  const month = format(today.getMonth());
+  const month = format(today.getMonth() + 1);
   const date = format(today.getDate());
   const hour = format(today.getHours());
   const minutes = format(today.getMinutes());

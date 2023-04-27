@@ -7,17 +7,17 @@ const {
   HOSPITAL_SERVICE,
   ASSIGNED_PATIENT_LOCATION,
 } = require("../constants/patientVisit");
-const { PV1_MODEL } = require("../models/pv1.model");
+const { PATIENT } = require("../models/patient.model");
 
 const PV1_SEGMENT = {
-  [PATIENT_VISIT_ID]: PV1_MODEL.PATIENT_VISIT_ID,
-  [PATIENT_CLASS]: PV1_MODEL.PATIENT_CLASS,
+  [PATIENT_VISIT_ID]: PATIENT.patientVisitId,
+  [PATIENT_CLASS]: PATIENT.patientClass,
   [ASSIGNED_PATIENT_LOCATION]: {
-    [POINT_OF_CARE]: PV1_MODEL.ASSIGNED_PATIENT_LOCATION.POINT_OF_CARE,
-    [ROOM]: PV1_MODEL.ASSIGNED_PATIENT_LOCATION.ROOM,
+    [POINT_OF_CARE]: PATIENT.assignedPatientLocation.pointOfCare,
+    [ROOM]: PATIENT.assignedPatientLocation.room,
   },
-  [BED_STATUS]: PV1_MODEL.BED_STATUS,
-  [HOSPITAL_SERVICE]: PV1_MODEL.HOSPITAL_SERVICE,
+  [BED_STATUS]: PATIENT.bedStatus,
+  [HOSPITAL_SERVICE]: PATIENT.hospitalService,
 };
 
 module.exports = { PV1_SEGMENT };

@@ -1,3 +1,5 @@
+const { getDateTime } = require("../utils/getCurrentDateTime");
+
 // Reference: https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/MSH
 const SENDING_APP = 3;
 const VERSION_ID = 12;
@@ -21,7 +23,32 @@ const _SA_NAMESPACE_ID = 1;
 const _RA_NAMESPACE_ID = 1;
 const _MESSAGE_STRUCTURE = 3;
 
+const MESSAGE = {
+  ADT_A01: "ADT_A01",
+  FIELD_SEPARATOR: "|",
+  ENCODING_CHARACTERS: "^~\\&",
+  SENDING_APP: "EVOKE",
+  RECEIVING_APP: "CLINIC",
+  DATETIME: getDateTime(),
+  MESSAGE_CODE: {
+    ADT: "ADT",
+    ACK: "ACK",
+  },
+  TRIGGER_EVENT: {
+    A01: "A01",
+    A02: "A02",
+  },
+  MESSAGE_CONTROL_ID: "MID-66",
+  PROCESSING_ID: {
+    TRAINING: "T",
+    PRODUCTION: "P",
+    DEBUGGING: "D",
+  },
+  VERSION_ID: "2.5.1",
+};
+
 module.exports = {
+  MESSAGE,
   VERSION_ID,
   _VERSION_ID,
   _EVENT_TIME,
