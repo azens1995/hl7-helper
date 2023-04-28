@@ -24,8 +24,6 @@ const _RA_NAMESPACE_ID = 1;
 const _MESSAGE_STRUCTURE = 3;
 
 const MESSAGE = {
-  ADT_A01: "ADT_A01",
-  ORU_R01: "ORU_R01",
   FIELD_SEPARATOR: "|",
   ENCODING_CHARACTERS: "^~\\&",
   SENDING_APP: "EVOKE",
@@ -50,7 +48,14 @@ const MESSAGE = {
   VERSION_ID: "2.5.1",
 };
 
+// Defining HL7 types
+const TYPE = {
+  ADT_A01: "ADT_A01",
+  ORU_R01: "ORU_R01",
+};
+
 module.exports = {
+  TYPE,
   MESSAGE,
   VERSION_ID,
   _VERSION_ID,
