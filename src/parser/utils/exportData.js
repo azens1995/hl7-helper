@@ -1,5 +1,5 @@
-const adtA01Message = require("../message/adt.message");
-const oruR01Message = require("../message/oru.message");
+const adtA01Message = require("../message/adt_a01.message");
+const oruR01Message = require("../message/oru_r01.message");
 const messageType = require("../constant/messageType.constant");
 
 function exportData(fileType, jsonData) {
