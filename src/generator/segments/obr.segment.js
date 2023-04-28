@@ -1,0 +1,15 @@
+const {
+  REQUESTS,
+  REQUEST_ID,
+  _UNIVERSAL_SERVICE_ID,
+  UNIVERSAL_SERVICE_IDENTIFIER,
+} = require("../constants/observationRequest");
+
+const OBR_SEGMENT = {
+  [REQUEST_ID]: REQUESTS.ID,
+  [UNIVERSAL_SERVICE_IDENTIFIER]: {
+    [_UNIVERSAL_SERVICE_ID]: REQUESTS.IDENTIFIER_ID,
+  },
+};
+
+module.exports = { OBR_SEGMENT };
