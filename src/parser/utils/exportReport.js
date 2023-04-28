@@ -4,10 +4,7 @@ const Hl7Parser = require("./parser");
 const exportData = require("./exportData");
 
 function reportExtraction() {
-  const sampleFilePath = path.join(
-    __dirname,
-    "./../../../Hl7Samples/ORU_LAB.txt"
-  );
+  const sampleFilePath = path.join(__dirname, "./../../../orders/ORU_LAB.txt");
   const parser = new Hl7Parser(sampleFilePath);
   const decodedMessage = parser.parse();
   const messageType = decodedMessage.MSH[9][1] + "_" + decodedMessage.MSH[9][2];
