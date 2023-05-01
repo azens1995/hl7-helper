@@ -1,16 +1,15 @@
 const fs = require("fs");
-const path = require("path");
-const Hl7Parser = require("./parser");
-const exportData = require("./exportData");
+const Hl7MessageFactory = require("../factory/Hl7factory");
+const messageType = require("../constant/messageType.constant");
 
-function reportExtraction() {
-  const sampleFilePath = path.join(__dirname, "./../../../orders/ORU_LAB.txt");
-  const parser = new Hl7Parser(sampleFilePath);
-  const decodedMessage = parser.parse();
-  const messageType = decodedMessage.MSH[9][1] + "_" + decodedMessage.MSH[9][2];
-  const { observation } = exportData(messageType.toUpperCase(), decodedMessage);
+function exportReport() {
+  const Hl7factory = new Hl7MessageFactory();
+  const {
+    observation,
+    messageHeader: { messageType: mshType },
+  } = Hl7factory.getMessage(messageType.ORU_R01);
   observation.forEach(({ data: base64Encoded }, index) => {
-    const folderName = "reports/ORU_LAB";
+    const folderName = `reports/${mshType}`;
     if (!fs.existsSync(folderName)) {
       fs.mkdirSync(folderName);
     }
@@ -21,4 +20,4 @@ function reportExtraction() {
     );
   });
 }
-module.exports = reportExtraction;
+module.exports = exportReport;
