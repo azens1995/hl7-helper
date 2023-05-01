@@ -1,6 +1,8 @@
 const path = require("path");
 const Hl7Parser = require("../utils/parser");
 class AdtA01Message {
+  messageHeader = null;
+  patient = null;
   constructor() {
     const sampleFilePath = path.join(__dirname, "../../../orders/ADT_AO1.txt");
     const parser = new Hl7Parser(sampleFilePath);

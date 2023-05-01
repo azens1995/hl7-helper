@@ -3,6 +3,9 @@ const Hl7Parser = require("../utils/parser");
 const { PID } = require("../constant/app.constant");
 
 class OruR01Message {
+  messageHeader = null;
+  patient = null;
+  observation = null;
   constructor() {
     const sampleFilePath = path.join(__dirname, "../../../orders/ORU_R01.txt");
     const parser = new Hl7Parser(sampleFilePath);
