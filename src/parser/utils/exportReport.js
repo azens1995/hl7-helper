@@ -4,11 +4,13 @@ const messageType = require("../constant/messageType.constant");
 
 function exportReport() {
   const Hl7factory = new Hl7MessageFactory();
-  const {
-    observation,
-    messageHeader: { messageType: mshType },
-  } = Hl7factory.getMessage(messageType.ORU_R01);
-  observation.forEach(({ data: base64Encoded }, index) => {
+  const { observationData, messageType: mshType } = Hl7factory.getMessage(
+    messageType.ORU_R01
+  );
+  if (!observationData) {
+    return;
+  }
+  observationData.forEach(({ data: base64Encoded }, index) => {
     const folderName = `reports/${mshType}`;
     if (!fs.existsSync(folderName)) {
       fs.mkdirSync(folderName);
