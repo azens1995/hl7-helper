@@ -1,20 +1,20 @@
 const store = new Map();
 
 module.exports = {
-  get: function get(key) {
+  get: (key) => {
     return store.get(key);
   },
-  set: function set(key, value) {
+  set: (key, value) => {
     return store.set(key, value);
   },
-  hasKey: function hasKey(key) {
+  hasKey: (key) => {
     return store.has(key);
   },
-  remove: function remove(key) {
+  remove: (key) => {
     return store.delete(key);
   },
 
-  deleteAll: function deleteAll() {
+  deleteAll: () => {
     return store.clear();
   },
 };
