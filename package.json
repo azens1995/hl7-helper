@@ -16,6 +16,7 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
-    "@redoxengine/redox-hl7-v2": "^1.0.1"
+    "@redoxengine/redox-hl7-v2": "^1.0.1",
+    "pdf-lib": "^1.17.1"
   }
 }
