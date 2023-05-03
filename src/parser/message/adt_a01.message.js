@@ -18,14 +18,17 @@ const {
 } = require("../constant/hl7Keys");
 const store = require("../utils/store");
 const { withOnlyAttrs } = require("../utils/object");
-const messageType = require("../constant/messageType.constant");
+const { ADT_A01 } = require("../constant/messageType.constant");
 class AdtA01Message {
   adtA01Message = null;
   constructor(decodedMessage) {
+    if (!decodedMessage) {
+      return this.adtA01Message;
+    }
     const messageHeaderInfo = decodedMessage.MSH;
     const patientInfo = decodedMessage.PID;
     const newMap = new Map();
-    const requiredKeys = store.get(messageType.ADT_A01);
+    const requiredKeys = store.get(ADT_A01);
     this.#mapMSH(newMap, messageHeaderInfo);
     this.#mapPID(newMap, patientInfo);
     this.adtA01Message = withOnlyAttrs(newMap, requiredKeys);
