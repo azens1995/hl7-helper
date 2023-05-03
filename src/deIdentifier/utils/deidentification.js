@@ -28,31 +28,33 @@ const deIdentification = (message, messageType) => {
   }
 
   // Replace original value with random value
-  PID["5"][0]["2"] = getRandomFirstName(getRandomValue());
+  const randomValue = getRandomValue();
+
+  PID["5"][0]["2"] = getRandomFirstName(randomValue);
 
   if (PID["5"][0]["1"]) {
-    PID["5"][0]["1"]["1"] = getRandomLastName(getRandomValue());
+    PID["5"][0]["1"]["1"] = getRandomLastName(randomValue);
   }
 
   if (PID["13"]) {
-    PID["13"][0]["4"] = getRandomEmail(getRandomValue());
-    PID["13"][0]["5"] = getRandomCountryCode(getRandomValue());
-    PID["13"][0]["1"] = getRandomPhoneNumber(getRandomValue()); // This can also be Fax number
+    PID["13"][0]["4"] = getRandomEmail(randomValue);
+    PID["13"][0]["5"] = getRandomCountryCode(randomValue);
+    PID["13"][0]["1"] = getRandomPhoneNumber(randomValue); // This can also be Fax number
   }
 
   if (PID["7"]) {
-    PID["7"]["1"] = getRandomDateTime(getRandomValue());
+    PID["7"]["1"] = getRandomDateTime(randomValue);
   }
 
   if (PID["11"]) {
-    PID["11"][0]["3"] = getRandomCity(getRandomValue());
-    PID["11"][0]["4"] = getRandomState(getRandomValue());
-    PID["11"][0]["6"] = getRandomCountry(getRandomValue());
-    PID["11"][0]["5"] = getRandomZipCode(getRandomValue());
-    PID["11"][0]["1"]["1"] = getRandomStreet(getRandomValue());
+    PID["11"][0]["3"] = getRandomCity(randomValue);
+    PID["11"][0]["4"] = getRandomState(randomValue);
+    PID["11"][0]["6"] = getRandomCountry(randomValue);
+    PID["11"][0]["5"] = getRandomZipCode(randomValue);
+    PID["11"][0]["1"]["1"] = getRandomStreet(randomValue);
   }
 
-  PID["19"] = getRandomSSN(getRandomValue());
+  PID["19"] = getRandomSSN(randomValue);
 
   return message;
 };
