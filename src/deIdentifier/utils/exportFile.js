@@ -1,7 +1,8 @@
 const fs = require("fs");
+const { OUTDIR } = require("../constants/dirName");
 
 const exportFile = (deidentified_msg, dirName, fileName) => {
-  const dir = `deidentified-files/${dirName}`;
+  const dir = `${OUTDIR}/${dirName}`;
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
