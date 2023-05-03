@@ -1,5 +1,3 @@
-const path = require("path");
-const Hl7Parser = require("../utils/parser");
 const { PID } = require("../constant/app.constant");
 const {
   FULL_NAME,
@@ -25,10 +23,7 @@ const messageType = require("../constant/messageType.constant");
 
 class OruR01Message {
   oruMessage = null;
-  constructor() {
-    const sampleFilePath = path.join(__dirname, "../../../orders/ORU_R01.txt");
-    const parser = new Hl7Parser(sampleFilePath);
-    const decodedMessage = parser.parse();
+  constructor(decodedMessage) {
     const messageHeaderInfo = decodedMessage.MSH;
     const patientInfo =
       decodedMessage[PID.PATIENT_RESULT][0][PID.PATIENT][PID.PID_INFO];
