@@ -2,6 +2,9 @@ const fs = require("fs");
 const { getCurrentDateInYYYYMMDD } = require("../utils/date");
 
 function exportReport(message) {
+  if (!message) {
+    return;
+  }
   const { observationData, messageType: mshType } = message;
   if (!observationData) {
     return;
