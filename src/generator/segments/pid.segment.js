@@ -12,7 +12,7 @@ const {
   _FAMILY_NAME,
   _PID_LIST_ID,
   _COUNTRY_CODE,
-  _LOCAL_NUMBER,
+  _PHONE_NUMBER,
   MARITAL_STATUS,
   _NAME_TYPE_CODE,
   _MARITAL_STATUS,
@@ -47,7 +47,7 @@ const PID_SEGMENT = {
   [PHONENUMBER]: [
     {
       [_COUNTRY_CODE]: PATIENT.phoneNumber.split(" ")[0],
-      [_LOCAL_NUMBER]: PATIENT.phoneNumber.split(" ")[1],
+      [_PHONE_NUMBER]: PATIENT.phoneNumber.split(" ")[1],
     },
   ],
   [MARITAL_STATUS]: {

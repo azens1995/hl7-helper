@@ -16,7 +16,7 @@ const _FIRST_NAME = 2;
 const _FAMILY_NAME = 1;
 const _PID_LIST_ID = 1;
 const _COUNTRY_CODE = 5;
-const _LOCAL_NUMBER = 7;
+const _PHONE_NUMBER = 1;
 const _NAME_TYPE_CODE = 7;
 const _MARITAL_STATUS = 1;
 const _PID_LIST_TYPE_CODE = 5;
@@ -35,7 +35,7 @@ module.exports = {
   _PID_LIST_ID,
   PATIENT_NAME,
   _COUNTRY_CODE,
-  _LOCAL_NUMBER,
+  _PHONE_NUMBER,
   MARITAL_STATUS,
   _NAME_TYPE_CODE,
   _MARITAL_STATUS,
