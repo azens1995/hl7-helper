@@ -1,17 +1,13 @@
 const fs = require("fs");
-const Hl7MessageFactory = require("../factory/Hl7factory");
-const messageType = require("../constant/messageType.constant");
+const { getCurrentDateInYYYYMMDD } = require("../utils/date");
 
-function exportReport() {
-  const Hl7factory = new Hl7MessageFactory();
-  const { observationData, messageType: mshType } = Hl7factory.getMessage(
-    messageType.ORU_R01
-  );
+function exportReport(message) {
+  const { observationData, messageType: mshType } = message;
   if (!observationData) {
     return;
   }
   observationData.forEach(({ data: base64Encoded }, index) => {
-    const folderName = `reports/${mshType}`;
+    const folderName = `reports/${mshType}-${getCurrentDateInYYYYMMDD()}`;
     if (!fs.existsSync(folderName)) {
       fs.mkdirSync(folderName);
     }

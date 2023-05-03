@@ -3,12 +3,12 @@ const OruR01Message = require("../message/oru_r01.message");
 const messageType = require("../constant/messageType.constant");
 
 class Hl7MessageFactory {
-  getMessage(fileType) {
+  getMessage(fileType, jsonData) {
     switch (fileType) {
       case messageType.ORU_R01:
-        return new OruR01Message();
+        return new OruR01Message(jsonData);
       case messageType.ADT_A01:
-        return new AdtA01Message();
+        return new AdtA01Message(jsonData);
       default:
         return "";
     }
