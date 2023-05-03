@@ -19,11 +19,14 @@ const {
 } = require("../constant/hl7Keys");
 const store = require("../utils/store");
 const { withOnlyAttrs } = require("../utils/object");
-const messageType = require("../constant/messageType.constant");
+const { ORU_R01 } = require("../constant/messageType.constant");
 
 class OruR01Message {
   oruMessage = null;
   constructor(decodedMessage) {
+    if (!decodedMessage) {
+      return this.oruMessage;
+    }
     const messageHeaderInfo = decodedMessage.MSH;
     const patientInfo =
       decodedMessage[PID.PATIENT_RESULT][0][PID.PATIENT][PID.PID_INFO];
@@ -32,7 +35,7 @@ class OruR01Message {
         PID.OBSERVATION
       ];
     const newMap = new Map();
-    const requiredKeys = store.get(messageType.ORU_R01);
+    const requiredKeys = store.get(ORU_R01);
     this.#mapMSH(newMap, messageHeaderInfo);
     this.#mapPID(newMap, patientInfo);
     const observationData = this.#mapOrderObservation(
