@@ -1,5 +1,3 @@
-const path = require("path");
-const Hl7Parser = require("../utils/parser");
 const {
   FULL_NAME,
   DOB_BIRTH,
@@ -23,10 +21,7 @@ const { withOnlyAttrs } = require("../utils/object");
 const messageType = require("../constant/messageType.constant");
 class AdtA01Message {
   adtA01Message = null;
-  constructor() {
-    const sampleFilePath = path.join(__dirname, "../../../orders/ADT_AO1.txt");
-    const parser = new Hl7Parser(sampleFilePath);
-    const decodedMessage = parser.parse();
+  constructor(decodedMessage) {
     const messageHeaderInfo = decodedMessage.MSH;
     const patientInfo = decodedMessage.PID;
     const newMap = new Map();
