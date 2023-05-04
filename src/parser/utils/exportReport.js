@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { mergeFiles } = require("./file");
+const { generateRandomNumber } = require("./random");
 
 async function exportReport(message, coverPage) {
   if (!message || !coverPage) {
@@ -20,7 +21,10 @@ async function exportReport(message, coverPage) {
 
     try {
       fs.writeFileSync(
-        `${folderName}/${new Date().getTime()}.pdf`,
+        `${folderName}/${new Date().getTime()}_${generateRandomNumber(
+          1,
+          100
+        )}.pdf`,
         mergedBase64PDF,
         "base64"
       );
