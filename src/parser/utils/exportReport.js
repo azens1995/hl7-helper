@@ -1,9 +1,8 @@
 const fs = require("fs");
-const { mergeFiles } = require("./file");
 const { generateRandomNumber } = require("./random");
 
-async function exportReport(message, coverPage) {
-  if (!message || !coverPage) {
+async function exportReport(message) {
+  if (!message) {
     return;
   }
   const { observationData, messageType: mshType } = message;
@@ -17,7 +16,6 @@ async function exportReport(message, coverPage) {
       fs.mkdirSync(folderName);
     }
     const { data: base64PDF } = observation;
-    const mergedBase64PDF = await mergeFiles(coverPage, base64PDF);
 
     try {
       fs.writeFileSync(
@@ -25,7 +23,7 @@ async function exportReport(message, coverPage) {
           1,
           100
         )}.pdf`,
-        mergedBase64PDF,
+        base64PDF,
         "base64"
       );
     } catch (err) {
