@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { PDFDocument } = require("pdf-lib");
 
 function getFile(path) {
   if (!path) {
@@ -33,45 +32,7 @@ function getFilesFromDir(path) {
   }
 }
 
-async function mergeFiles(file1, file2) {
-  if (!file1 || !file2) {
-    throw new Error("Files not found.");
-  }
-  // Load the base64 encoded files
-  const PdfFile1 = await PDFDocument.load(Buffer.from(file1, "base64"));
-  const PdfFile2 = await PDFDocument.load(Buffer.from(file2, "base64"));
-
-  // Create a new document
-  const mergedPdfDoc = await PDFDocument.create();
-
-  // Add the pages from the first File
-  const file1Pages = await mergedPdfDoc.copyPages(
-    PdfFile1,
-    PdfFile1.getPageIndices()
-  );
-  file1Pages.forEach((page) => {
-    mergedPdfDoc.addPage(page);
-  });
-
-  // Add the pages from the second File
-  const file2Pages = await mergedPdfDoc.copyPages(
-    PdfFile2,
-    PdfFile2.getPageIndices()
-  );
-  file2Pages.forEach((page) => {
-    mergedPdfDoc.addPage(page);
-  });
-
-  // Save the merged PDF to a buffer
-  const mergedPdfBytes = await mergedPdfDoc.save();
-
-  // Convert the buffer to a base64 encoded string
-  const mergedBase64PDF = Buffer.from(mergedPdfBytes).toString("base64");
-
-  return mergedBase64PDF;
-}
 module.exports = {
   getFile,
   getFilesFromDir,
-  mergeFiles,
 };
