@@ -32,10 +32,9 @@ async function mergeFiles(pdfFilePath1, pdfFilePath2) {
     mergedPdfDoc.addPage(page);
   });
 
-  // Save the merged PDF to a buffer
+  // Save the merged PDF
   const mergedPdfBytes = await mergedPdfDoc.save();
 
-  // Convert the buffer to a base64 encoded string
   return mergedPdfBytes;
 }
 
