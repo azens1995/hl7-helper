@@ -28,6 +28,11 @@ const store = require("../utils/store");
 const { withOnlyAttrs } = require("../utils/object");
 const { ORU_R01 } = require("../constant/messageType.constant");
 
+/**
+ * This class maps specific fields from a decoded HL7 message to a new map object.
+ * refer: https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/ORU_R01, to know
+ * the position of the fields in the decoded HL7 message.
+ */
 class OruR01Message {
   oruMessage = null;
   constructor(decodedMessage) {
@@ -53,6 +58,15 @@ class OruR01Message {
     return this.oruMessage;
   }
 
+  /**
+   * Sets various message header information fields in a map object based on data from a MSH
+   * message(refer: https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/MSH).
+   *
+   * @param {object} map - A Map object that will be populated with message header information extracted from the MSH
+   * message data.
+   * @param {object} mshMessageData - mshMessageData is an array that contains message header
+   * information.
+   */
   #mapMSH(map, mshMessageData) {
     map.set(SENDER_APPLICATION, mshMessageData[3][1]);
     map.set(SENDER_FACILITY, mshMessageData[4][1]);
@@ -60,6 +74,15 @@ class OruR01Message {
     map.set(MESSAGE_TYPE, mshMessageData[9][1] + "_" + mshMessageData[9][2]);
   }
 
+  /**
+   * Sets various patient information fields in a map object based on data from a PID
+   * message(refer:https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/PID).
+   *
+   * @param {object} map - A Map object that will be populated with patient information extracted from the PID
+   * message data.
+   * @param {object} pidMessageData - pidMessageData is an array that contains patient identification
+   * information.
+   */
   #mapPID(map, pidMessageData) {
     map.set(
       FULL_NAME,
@@ -74,6 +97,17 @@ class OruR01Message {
     map.set(SEX, pidMessageData[8]);
   }
 
+  /**
+   * Maps and filters order observation data based on required keys(refer: https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/OBX)
+   *
+   * @param {object[]} orderObservationData - It is an array of objects containing order observation data. Each
+   * object represents a single observation and contains information such as the encoding type, type of
+   * data, data, and result status.
+   * @param {string[]} requiredKeys - It is an array of strings representing the keys that are required in the
+   * output Map object. The function `mapOrderObservation` will filter out any keys that are not
+   * included in this array.
+   * @returns {Array}
+   */
   #mapOrderObservation(orderObservationData, requiredKeys) {
     const observationData = orderObservationData
       .reduce((acc, cum) => {
@@ -81,7 +115,7 @@ class OruR01Message {
           return acc;
         }
         const newMap = new Map();
-        const observationValue = cum.OBX[5][0].split("^");
+        const observationValue = cum.OBX[5][0].split("^"); // split the 5th index of OBX array to get the observation value(refer: https://hl7-definition.caristix.com/v2/HL7v2.7/Fields/OBX.5)
         newMap.set(ENCODING_TYPE, observationValue[3]);
         newMap.set(TYPE_OF_DATA, observationValue[1]);
         newMap.set(DATA, observationValue[4]);
