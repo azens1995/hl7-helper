@@ -1,6 +1,10 @@
 const fs = require("fs");
 const hl7v2 = require("@redoxengine/redox-hl7-v2");
 
+/**
+ * Util class that parses HL7 messages from a specific file path.
+ *
+ */
 class Hl7Parser {
   #filePath = null;
 

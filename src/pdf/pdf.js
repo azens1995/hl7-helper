@@ -1,6 +1,15 @@
 const fs = require("fs");
 const path = require("path");
 const { PDFDocument } = require("pdf-lib");
+
+/**
+ * Merges two PDF files into a single PDF file.
+ *
+ * @param {string} pdfFilePath1 - The file path of the first PDF file to be merged.
+ * @param {string} pdfFilePath2 - The file path of the second PDF file that needs to be merged with the first
+ * PDF file.
+ * @returns the merged PDF file as a byte array.
+ */
 async function mergeFiles(pdfFilePath1, pdfFilePath2) {
   const file1 = fs.readFileSync(pdfFilePath1);
   const file2 = fs.readFileSync(pdfFilePath2);

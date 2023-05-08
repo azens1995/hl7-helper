@@ -1,6 +1,11 @@
 const fs = require("fs");
 const { generateRandomNumber } = require("./random");
 
+/**
+ * Exports observation data as PDF reports to a specific folder depending on the message type.
+ *
+ * @param {object} message - The `message` parameter is an object that contains information about a message.
+ */
 async function exportReport(message) {
   if (!message) {
     return;
