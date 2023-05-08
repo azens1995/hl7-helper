@@ -21,6 +21,11 @@ const {
   RESULT_STATUS,
 } = require("../constant/hl7Keys");
 
+/**
+ * Get required fields for the ORU_R01 message type.
+ *
+ * @returns {string[]}
+ */
 function getOruR01Keys() {
   const patient = [
     FULL_NAME,
@@ -42,6 +47,11 @@ function getOruR01Keys() {
   return [...patient, ...report];
 }
 
+/**
+ * Get required fields for the ADT_R01 message type.
+ *
+ * @returns {string[]}
+ */
 function getAdtA01Keys() {
   const patient = [
     FULL_NAME,

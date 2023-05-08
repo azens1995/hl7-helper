@@ -19,6 +19,11 @@ const {
 const store = require("../utils/store");
 const { withOnlyAttrs } = require("../utils/object");
 const { ADT_A01 } = require("../constant/messageType.constant");
+/**
+ * This class maps specific fields from a decoded HL7 message to a new map object.
+ * refer: https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/ADT_A01, to know
+ * the position of the fields in the decoded HL7 message.
+ */
 class AdtA01Message {
   adtA01Message = null;
   constructor(decodedMessage) {
@@ -35,6 +40,15 @@ class AdtA01Message {
     return this.adtA01Message;
   }
 
+  /**
+   * Sets various message header information fields in a map object based on data from a MSH
+   * message(refer: https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/MSH).
+   *
+   * @param {object} map - A Map object that will be populated with message header information extracted from the MSH
+   * message data.
+   * @param {object} mshMessageData - mshMessageData is an array that contains message header
+   * information.
+   */
   #mapMSH(map, mshMessageData) {
     map.set(SENDER_APPLICATION, mshMessageData[3][1]);
     map.set(SENDER_FACILITY, mshMessageData[4][1]);
@@ -42,6 +56,15 @@ class AdtA01Message {
     map.set(MESSAGE_TYPE, mshMessageData[9][1] + "_" + mshMessageData[9][2]);
   }
 
+  /**
+   * Sets various patient information fields in a map object based on data from a PID
+   * message(refer:https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/PID).
+   *
+   * @param {object} map - A Map object that will be populated with patient information extracted from the PID
+   * message data.
+   * @param {object} pidMessageData - pidMessageData is an array that contains patient identification
+   * information.
+   */
   #mapPID(map, pidMessageData) {
     map.set(
       FULL_NAME,

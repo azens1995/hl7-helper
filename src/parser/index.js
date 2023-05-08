@@ -14,11 +14,25 @@ const Hl7FilesPath = path.join(
 );
 const files = getFilesFromDir(Hl7FilesPath);
 
-//call api to retrieve required keys and store to global state for future uses during parsing.
+/**
+ * The `store` object is used to store key-value pairs that can be accessed from anywhere in the code.
+ * This is an API mocking to retrieve required fields for each type of message. The `getAdtA01Keys()` and
+ * `getOruR01Keys()` functions are used to retrieve the required fields for ADT_A01 and ORU_R01 messages
+ * respectively.
+ */
+//TODO: Call actual api to retrieve required keys and store to global state for future uses during parsing.
 store.set(messageType.ADT_A01, getAdtA01Keys());
 store.set(messageType.ORU_R01, getOruR01Keys());
 const Hl7factory = new Hl7MessageFactory();
 
+/**
+ * This code block is iterating through an array of Hl7 files obtained from a orders directory path. For each
+ * file, it creates a new instance of `Hl7Parser` with the file path, parses the HL7 message, extracts
+ * the message header, determines the message type based on the value in the 9th field of the message
+ * header(refer: https://hl7-definition.caristix.com/v2/HL7v2.7/Segments/MSH), creates a new message object
+ * using `Hl7factory.getMessage()` method, exports a report using`exportReport()` function. The reason for iterating
+ * through the files is to support batch parsing of HL7 messages.
+ */
 for (const file of files) {
   const parser = new Hl7Parser(`${Hl7FilesPath}/${file}`);
   const decodedMessage = parser.parse();
