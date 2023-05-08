@@ -1,3 +1,4 @@
+// Reference: https://hl7-definition.caristix.com/v2/HL7v2.5.1/Segments/PID
 const DOB = 7;
 const SEX = 8;
 const ADDRESS = 11;

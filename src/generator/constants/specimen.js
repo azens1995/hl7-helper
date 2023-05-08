@@ -1,3 +1,4 @@
+// Reference: https://hl7-definition.caristix.com/v2/HL7v2.5.1/Segments/SPM
 const SPECIMEN_ID = 1;
 const SPECIMEN_TYPE = 4;
 

@@ -1,3 +1,7 @@
+/*
+ TODO: Get patient information from database.
+ For now, the data is being mocked and used.
+*/
 const PATIENT = {
   patientId: "1",
   firstName: "Chris",
