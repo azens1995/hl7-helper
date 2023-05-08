@@ -1,31 +1,33 @@
 const {
   OBX_ID,
-  RESULTS,
   VALUE_TYPE,
+  _IDENTIFIER_ID,
+  _IDENTIFIER_TEXT,
   OBSERVATION_VALUE,
   OBSERVATION_IDENTIFIER,
-  _OBSERVATION_IDENTIFIER,
   OBSERVATION_RESULT_STATUS,
 } = require("../constants/observationResult");
-const { base64String } = require("../utils/pdf_to_base64string");
 
-const base64Stringdata = base64String();
-
-const OBX_SEGMENT = {
-  [OBX_ID]: RESULTS.ID,
-  [OBSERVATION_IDENTIFIER]: {
-    [_OBSERVATION_IDENTIFIER]: RESULTS.IDENTIFIER_ID,
-  },
-  [VALUE_TYPE]: RESULTS.VALUE_TYPE.ENCAPSULATED_DATA,
-  [OBSERVATION_VALUE]: [
-    {
-      1: "Application",
-      2: "pdf",
-      4: "Base64",
-      5: base64Stringdata,
+const OBX_SEGMENT = (
+  id,
+  status,
+  valueType,
+  identifierId,
+  identifierText,
+  observationValue
+) => {
+  const obxSegment = {
+    [OBX_ID]: id,
+    [OBSERVATION_IDENTIFIER]: {
+      [_IDENTIFIER_ID]: identifierId,
+      [_IDENTIFIER_TEXT]: identifierText,
     },
-  ],
-  [OBSERVATION_RESULT_STATUS]: RESULTS.STATUS.PARTIAL_RESULT,
+    [VALUE_TYPE]: valueType,
+    [OBSERVATION_VALUE]: observationValue,
+    [OBSERVATION_RESULT_STATUS]: status,
+  };
+
+  return obxSegment;
 };
 
 module.exports = { OBX_SEGMENT };

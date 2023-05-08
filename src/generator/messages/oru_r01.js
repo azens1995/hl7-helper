@@ -1,3 +1,7 @@
+const {
+  RESULTS,
+  SAMPLE_OBSERVATION_VALUE,
+} = require("../constants/observationResult");
 const { MESSAGE, TYPE } = require("../constants/message");
 const { MSH_SEGMENT } = require("../segments/msh.segment");
 const { PID_SEGMENT } = require("../segments/pid.segment");
@@ -27,9 +31,29 @@ const ORU_R01 = {
       TIMING_QTY: {
         TQ1: TQ1_SEGMENT,
       },
-      OBSERVATION: {
-        OBX: OBX_SEGMENT,
-      },
+      OBSERVATION: [
+        // Can pass multiple obx segment
+        {
+          OBX: OBX_SEGMENT(
+            RESULTS.ID,
+            RESULTS.STATUS.PARTIAL_RESULT,
+            RESULTS.VALUE_TYPE.ENCAPSULATED_DATA,
+            RESULTS.IDENTIFIER_ID.RANDOM_STRING,
+            RESULTS.IDENTIFIER_TEXT.ENCAPSULATED_DATA,
+            SAMPLE_OBSERVATION_VALUE.ENCAPSULATED_DATA
+          ),
+        },
+        {
+          OBX: OBX_SEGMENT(
+            ++RESULTS.ID,
+            RESULTS.STATUS.RESULT_ENTER_NOT_VERIFIED,
+            RESULTS.VALUE_TYPE.PERSON_NAME,
+            RESULTS.IDENTIFIER_ID.RANDOM_STRING,
+            RESULTS.IDENTIFIER_TEXT.PERSON_NAME,
+            SAMPLE_OBSERVATION_VALUE.PERSON_NAME
+          ),
+        },
+      ],
       SPECIMEN: {
         SPM: SPM_SEGMENT,
       },

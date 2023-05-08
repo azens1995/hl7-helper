@@ -1,3 +1,7 @@
+const {
+  RESULTS,
+  SAMPLE_OBSERVATION_VALUE,
+} = require("../constants/observationResult");
 const { MESSAGE, TYPE } = require("../constants/message");
 const { PID_SEGMENT } = require("../segments/pid.segment");
 const { PV1_SEGMENT } = require("../segments/pv1.segment");
@@ -17,7 +21,14 @@ const ADT_A01 = {
   PID: PID_SEGMENT,
   EVN: EVN_SEGMENT,
   PV1: PV1_SEGMENT,
-  OBX: OBX_SEGMENT,
+  OBX: OBX_SEGMENT(
+    "1", //id
+    RESULTS.STATUS.PARTIAL_RESULT,
+    RESULTS.VALUE_TYPE.ENCAPSULATED_DATA,
+    RESULTS.IDENTIFIER_ID.RANDOM_STRING,
+    RESULTS.IDENTIFIER_TEXT.ENCAPSULATED_DATA,
+    SAMPLE_OBSERVATION_VALUE.ENCAPSULATED_DATA
+  ),
 };
 
 module.exports = { ADT_A01 };
