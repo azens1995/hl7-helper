@@ -75,19 +75,21 @@ class OruR01Message {
   }
 
   #mapOrderObservation(orderObservationData, requiredKeys) {
-    const observationData = orderObservationData.reduce((acc, cum) => {
-      if (cum.OBX[2] !== ENCODING_DATA) {
+    const observationData = orderObservationData
+      .reduce((acc, cum) => {
+        if (cum.OBX[2] !== ENCODING_DATA) {
+          return acc;
+        }
+        const newMap = new Map();
+        const observationValue = cum.OBX[5][0].split("^");
+        newMap.set(ENCODING_TYPE, observationValue[3]);
+        newMap.set(TYPE_OF_DATA, observationValue[1]);
+        newMap.set(DATA, observationValue[4]);
+        newMap.set(RESULT_STATUS, cum.OBX[11]);
+        acc.push(withOnlyAttrs(newMap, requiredKeys));
         return acc;
-      }
-      const newMap = new Map();
-      const observationValue = cum.OBX[5][0].split("^");
-      newMap.set(ENCODING_TYPE, observationValue[3]);
-      newMap.set(TYPE_OF_DATA, observationValue[1]);
-      newMap.set(DATA, observationValue[4]);
-      newMap.set(RESULT_STATUS, cum.OBX[11]);
-      acc.push(withOnlyAttrs(newMap, requiredKeys));
-      return acc;
-    }, []);
+      }, [])
+      .filter((value) => Object.keys(value).length !== 0);
     return observationData;
   }
 }
