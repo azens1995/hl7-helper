@@ -1,4 +1,11 @@
-const { PID } = require("../constant/app.constant");
+const {
+  PATIENT_RESULT,
+  PATIENT,
+  PID_INFO,
+  ORDER_OBSERVATION,
+  OBSERVATION,
+  ENCODING_DATA,
+} = require("../constant/app.constant");
 const {
   FULL_NAME,
   DOB_BIRTH,
@@ -28,12 +35,9 @@ class OruR01Message {
       return this.oruMessage;
     }
     const messageHeaderInfo = decodedMessage.MSH;
-    const patientInfo =
-      decodedMessage[PID.PATIENT_RESULT][0][PID.PATIENT][PID.PID_INFO];
+    const patientInfo = decodedMessage[PATIENT_RESULT][0][PATIENT][PID_INFO];
     const orderObservationInfo =
-      decodedMessage[PID.PATIENT_RESULT][0][PID.ORDER_OBSERVATION][0][
-        PID.OBSERVATION
-      ];
+      decodedMessage[PATIENT_RESULT][0][ORDER_OBSERVATION][0][OBSERVATION];
     const newMap = new Map();
     const requiredKeys = store.get(ORU_R01);
     this.#mapMSH(newMap, messageHeaderInfo);
@@ -71,17 +75,19 @@ class OruR01Message {
   }
 
   #mapOrderObservation(orderObservationData, requiredKeys) {
-    const observationData = orderObservationData
-      .map((observation) => {
-        const newMap = new Map();
-        const observationValue = observation.OBX[5][0].split("^");
-        newMap.set(ENCODING_TYPE, observationValue[3]);
-        newMap.set(TYPE_OF_DATA, observationValue[1]);
-        newMap.set(DATA, observationValue[4]);
-        newMap.set(RESULT_STATUS, observation.OBX[11]);
-        return withOnlyAttrs(newMap, requiredKeys);
-      })
-      .filter((value) => Object.keys(value).length !== 0);
+    const observationData = orderObservationData.reduce((acc, cum) => {
+      if (cum.OBX[2] !== ENCODING_DATA) {
+        return acc;
+      }
+      const newMap = new Map();
+      const observationValue = cum.OBX[5][0].split("^");
+      newMap.set(ENCODING_TYPE, observationValue[3]);
+      newMap.set(TYPE_OF_DATA, observationValue[1]);
+      newMap.set(DATA, observationValue[4]);
+      newMap.set(RESULT_STATUS, cum.OBX[11]);
+      acc.push(withOnlyAttrs(newMap, requiredKeys));
+      return acc;
+    }, []);
     return observationData;
   }
 }

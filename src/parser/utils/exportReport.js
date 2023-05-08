@@ -15,14 +15,14 @@ async function exportReport(message) {
     if (!fs.existsSync(folderName)) {
       fs.mkdirSync(folderName);
     }
-    const { data: base64PDF } = observation;
+    const { data: base64PDF, typeOfData } = observation;
 
     try {
       fs.writeFileSync(
         `${folderName}/${new Date().getTime()}_${generateRandomNumber(
           1,
           100
-        )}.pdf`,
+        )}.${typeOfData}`,
         base64PDF,
         "base64"
       );

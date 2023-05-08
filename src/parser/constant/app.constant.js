@@ -4,8 +4,7 @@ const PID = {
   PID_INFO: "PID",
   OBSERVATION: "OBSERVATION",
   ORDER_OBSERVATION: "ORDER_OBSERVATION",
+  ENCODING_DATA: "ED",
 };
 
-module.exports = {
-  PID,
-};
+module.exports = PID;
