@@ -8,6 +8,11 @@ const generator = new hl7v2.Generator();
 const data1 = generator.write(ADT_A01);
 const data2 = generator.write(ORU_R01);
 
+/* NOTE:
+Check whether the results folder is in root directory or not. If not, create one.
+The exported hl7 message will be stored in results directory.
+*/
+
 // Export generated message to the file
 exportHL7Message(data1, TYPE.ADT_A01);
 exportHL7Message(data2, TYPE.ORU_R01);

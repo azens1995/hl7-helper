@@ -11,6 +11,7 @@ const { OBR_SEGMENT } = require("../segments/obr.segment");
 const { SPM_SEGMENT } = require("../segments/spm.segment");
 const { TQ1_SEGMENT } = require("../segments/tq1.segment");
 
+// Unsolicited transmission of an observation message
 // Reference document for ORU_R01:
 // https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/ORU_R01
 const ORU_R01 = {

@@ -1,3 +1,4 @@
+// Reference: https://hl7-definition.caristix.com/v2/HL7v2.5.1/Segments/PV1
 const BED_STATUS = 40;
 const PATIENT_CLASS = 2;
 const PATIENT_VISIT_ID = 1;
