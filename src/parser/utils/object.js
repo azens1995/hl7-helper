@@ -3,8 +3,7 @@
  *
  * @param {Object} mapObj - The `mapObj` parameter is expected to be a Map object, which is a collection of
  * key-value pairs where both the keys and values can be of any type.
- * @param attrs - `attrs` is an array of strings representing the attributes that should be included in
- * the resulting object.
+ * @param attrs - attributes that should be included in the resulting object.
  * @returns {object}
  */
 function withOnlyAttrs(mapObj, attrs) {
@@ -23,7 +22,7 @@ function withOnlyAttrs(mapObj, attrs) {
  *
  * @param {object} mapObj - The `mapObj` parameter is expected to be a Map object, which is a collection of
  * key-value pairs where both the keys and values can be of any type.
- * @param attrs - The `attrs` parameter is an array of strings representing the attributes that should
+ * @param attrs - attributes that should
  * be excluded from the `mapObj`.
  * @returns {object}
  */

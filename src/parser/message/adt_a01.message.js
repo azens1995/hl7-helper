@@ -46,7 +46,7 @@ class AdtA01Message {
    *
    * @param {object} map - A Map object that will be populated with message header information extracted from the MSH
    * message data.
-   * @param {object} mshMessageData - mshMessageData is an array that contains message header
+   * @param {object} mshMessageData - contains message header
    * information.
    */
   #mapMSH(map, mshMessageData) {
@@ -62,7 +62,7 @@ class AdtA01Message {
    *
    * @param {object} map - A Map object that will be populated with patient information extracted from the PID
    * message data.
-   * @param {object} pidMessageData - pidMessageData is an array that contains patient identification
+   * @param {object} pidMessageData - contains patient identification
    * information.
    */
   #mapPID(map, pidMessageData) {

@@ -3,10 +3,10 @@ const OruR01Message = require("../message/oru_r01.message");
 const messageType = require("../constant/messageType.constant");
 
 /**
- * The Hl7MessageFactory class creates different types of HL7 messages based on the specified file type.
+ * This class creates different types of HL7 messages based on the specified file type.
  *
- * @param {string} fileType - The `fileType` parameter is a string that specifies the type of file.
- * @param {object} jsonData - The `jsonData` parameter is an object that contains information about
+ * @param {string} fileType - specifies the type of file.
+ * @param {object} jsonData - contains information about
  * a message.
  */
 class Hl7MessageFactory {
