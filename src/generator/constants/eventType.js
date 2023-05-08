@@ -1,3 +1,4 @@
+// Reference: https://hl7-definition.caristix.com/v2/HL7v2.5.1/Segments/EVN
 const EVENT_TYPE_CODE = 1;
 const RECORDED_DATE_TIME = 2;
 const EVENT_REQUEST_CODE = 4;

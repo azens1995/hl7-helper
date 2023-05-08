@@ -3,6 +3,7 @@ const { base64String } = require("../utils/pdf_to_base64string");
 
 const base64Stringdata = base64String();
 
+// Reference: https://hl7-definition.caristix.com/v2/HL7v2.5.1/Segments/OBX
 const OBX_ID = 1;
 const VALUE_TYPE = 2;
 const OBSERVATION_VALUE = 5;
