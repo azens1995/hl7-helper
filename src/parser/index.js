@@ -34,7 +34,8 @@ const Hl7factory = new Hl7MessageFactory();
  * through the files is to support batch parsing of HL7 messages.
  */
 for (const file of files) {
-  if (file.split(".").pop() !== "txt") {
+  const fileInfo = file.split(".");
+  if (fileInfo.pop() !== "txt") {
     continue;
   }
   const filePath = path.join(Hl7FilesPath, file);
@@ -43,6 +44,6 @@ for (const file of files) {
   const messageHeader = decodedMessage.MSH;
   const fileType = messageHeader[9][1] + "_" + messageHeader[9][2];
   const message = Hl7factory.getMessage(fileType.toUpperCase(), decodedMessage);
-  exportReport(message);
+  exportReport(message, fileInfo.shift());
   console.log(fileType, message);
 }
