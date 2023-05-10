@@ -1,11 +1,11 @@
 const path = require("path");
 const store = require("./utils/store");
 const Hl7Parser = require("./utils/parser");
+const { getFilesFromDir } = require("./utils/file");
 const exportReport = require("./utils/exportReport");
 const Hl7MessageFactory = require("./factory/Hl7factory");
 const { getCurrentDateInYYYYMMDD } = require("./utils/date");
 const messageType = require("./constant/messageType.constant");
-const { getFilesFromDir } = require("./utils/file");
 const { getAdtA01Keys, getOruR01Keys } = require("./factory/hl7Keys");
 const Hl7FilesPath = path.join(
   __dirname,
@@ -34,7 +34,11 @@ const Hl7factory = new Hl7MessageFactory();
  * through the files is to support batch parsing of HL7 messages.
  */
 for (const file of files) {
-  const parser = new Hl7Parser(`${Hl7FilesPath}/${file}`);
+  if (file.split(".").pop() !== "txt") {
+    continue;
+  }
+  const filePath = path.join(Hl7FilesPath, file);
+  const parser = new Hl7Parser(filePath);
   const decodedMessage = parser.parse();
   const messageHeader = decodedMessage.MSH;
   const fileType = messageHeader[9][1] + "_" + messageHeader[9][2];
