@@ -1,6 +1,6 @@
 const {
   FULL_NAME,
-  DO_BIRTH,
+  DOB,
   PHONE_NUMBER,
   EMAIL,
   PATIENT_ID,
@@ -25,7 +25,7 @@ const {
 function getAdtA01Keys() {
   const patient = [
     FULL_NAME,
-    DO_BIRTH,
+    DOB,
     PHONE_NUMBER,
     EMAIL,
     PATIENT_ID,
