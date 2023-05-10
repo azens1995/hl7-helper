@@ -21,3 +21,9 @@ For the purpose of creatin an application that could parse and generate the HL7 
 ## Working
 
 For the detailed information regarding the working of this application, please refere to this [document](https://docs.google.com/document/d/1VXymZ-7oscRI2KadyqDcqQnVTMKUs76xY4T9XZ4m9hw).
+
+## Contributors
+
+1. Eklak Dangaura
+2. Ishwar Gautam
+3. Sajid Ansari
