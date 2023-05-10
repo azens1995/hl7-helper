@@ -7,6 +7,7 @@
     "start:dev": "nodemon src/index.js",
     "generate": "node src/generator/index.js",
     "parse": "node src/parser/index.js",
+    "deidentify": "node src/deIdentifier/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

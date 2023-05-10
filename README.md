@@ -17,6 +17,8 @@ For the purpose of creatin an application that could parse and generate the HL7 
 
 1. `npm run generate` to generate the result HL7.
 2. `npm run parse` to parse the HL7 files provided in `orders` directory
+3. `npm run deidentify` to deidentify the HL7 files provided in `originals` directory. <br>
+   Note: Make sure you have hl7 files in the folder. Folder structure will be `/originals/today_date(e.g. 20210312)/some_file.txt`. You can have multiple hl7 files in the folder named as today_date. Only files that is inside folders of today date will be de-identified.
 
 ## Working
 
