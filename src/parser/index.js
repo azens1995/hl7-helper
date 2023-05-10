@@ -44,6 +44,6 @@ for (const file of files) {
   const messageHeader = decodedMessage.MSH;
   const fileType = messageHeader[9][1] + "_" + messageHeader[9][2];
   const message = Hl7factory.getMessage(fileType.toUpperCase(), decodedMessage);
-  exportReport(message, fileInfo.shift());
+  exportReport(message, fileInfo[0]);
   console.log(fileType, message);
 }
