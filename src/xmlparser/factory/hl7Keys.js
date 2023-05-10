@@ -15,37 +15,7 @@ const {
   SENDER_FACILITY,
   SENDER_DATE,
   MESSAGE_TYPE,
-  ENCODING_TYPE,
-  TYPE_OF_DATA,
-  DATA,
-  RESULT_STATUS,
-} = require("../constant/hl7Keys");
-
-/**
- * Get required fields for the ORU_R01 message type.
- *
- * @returns {string[]}
- */
-function getOruR01Keys() {
-  const patient = [
-    FULL_NAME,
-    DO_BIRTH,
-    PATIENT_ID,
-    MRN_NUMBER,
-    STREET,
-    CITY,
-    STATE,
-    SEX,
-    SENDER_APPLICATION,
-    SENDER_DATE,
-    SENDER_FACILITY,
-    MESSAGE_TYPE,
-  ];
-
-  const report = [ENCODING_TYPE, TYPE_OF_DATA, DATA, RESULT_STATUS];
-
-  return [...patient, ...report];
-}
+} = require("../constants/hl7Keys");
 
 /**
  * Get required fields for the ADT_R01 message type.
@@ -77,5 +47,4 @@ function getAdtA01Keys() {
 
 module.exports = {
   getAdtA01Keys,
-  getOruR01Keys,
 };

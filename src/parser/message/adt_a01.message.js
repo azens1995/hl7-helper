@@ -1,6 +1,6 @@
 const {
   FULL_NAME,
-  DOB_BIRTH,
+  DO_BIRTH,
   PHONE_NUMBER,
   EMAIL,
   PATIENT_ID,
@@ -19,6 +19,7 @@ const {
 const store = require("../utils/store");
 const { withOnlyAttrs } = require("../utils/object");
 const { ADT_A01 } = require("../constant/messageType.constant");
+
 /**
  * This class maps specific fields from a decoded HL7 message to a new map object.
  * refer: https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/ADT_A01, to know
@@ -70,7 +71,7 @@ class AdtA01Message {
       FULL_NAME,
       pidMessageData[5][0][2] + " " + pidMessageData[5][0][1][1]
     );
-    map.set(DOB_BIRTH, pidMessageData[7][1]);
+    map.set(DO_BIRTH, pidMessageData[7][1]);
     map.set(PHONE_NUMBER, pidMessageData[13][0][1]);
     map.set(EMAIL, pidMessageData[13][0][4]);
     map.set(MARITAL_STATUS, pidMessageData[16][1]);

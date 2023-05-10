@@ -1,0 +1,52 @@
+//Note: XPN, TS, XTN,CE, CX, SAD, XAD --> data types
+// refer: https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes
+const PATIENT_NAME = "PID.5";
+const PATIENT_FIRST_NAME = "XPN.2";
+const PATIENT_LAST_NAME = "XPN.1";
+
+const DATE_OF_BIRTH = "PID.7";
+const DATE_OF_BIRTH_TIME = "TS.1";
+
+const PHONE_NUMBER = "PID.13";
+const TELEPHONE_NUMBER = "XTN.1";
+const EMAIL = "XTN.4";
+
+const MARITAL_STATUS = "PID.16";
+const MARITAL_STATUS_IDENTIFIER = "CE.1";
+
+const SSN_NUMBER = "PID.19";
+
+const PATIENT_ID = "PID.3";
+const PATIENT_ID_NUMBER = "CX.1";
+const PATIENT_ID_MRN_NUMBER = "CX.5";
+
+const PATIENT_ADDRESS = "PID.11";
+const STREET_ADDRESS = "XAD.1";
+const MAILING_ADDRESS = "SAD.1";
+const CITY = "XAD.3";
+const STATE = "XAD.4";
+
+const SEX = "PID.8";
+
+module.exports = {
+  PATIENT_NAME,
+  PATIENT_FIRST_NAME,
+  PATIENT_LAST_NAME,
+  DATE_OF_BIRTH,
+  DATE_OF_BIRTH_TIME,
+  PHONE_NUMBER,
+  TELEPHONE_NUMBER,
+  EMAIL,
+  MARITAL_STATUS,
+  MARITAL_STATUS_IDENTIFIER,
+  SSN_NUMBER,
+  PATIENT_ID,
+  PATIENT_ID_MRN_NUMBER,
+  PATIENT_ID_NUMBER,
+  PATIENT_ADDRESS,
+  STREET_ADDRESS,
+  MAILING_ADDRESS,
+  CITY,
+  STATE,
+  SEX,
+};
