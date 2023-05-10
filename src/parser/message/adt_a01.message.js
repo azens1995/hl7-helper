@@ -1,6 +1,6 @@
 const {
   FULL_NAME,
-  DO_BIRTH,
+  DOB,
   PHONE_NUMBER,
   EMAIL,
   PATIENT_ID,
@@ -71,7 +71,7 @@ class AdtA01Message {
       FULL_NAME,
       pidMessageData[5][0][2] + " " + pidMessageData[5][0][1][1]
     );
-    map.set(DO_BIRTH, pidMessageData[7][1]);
+    map.set(DOB, pidMessageData[7][1]);
     map.set(PHONE_NUMBER, pidMessageData[13][0][1]);
     map.set(EMAIL, pidMessageData[13][0][4]);
     map.set(MARITAL_STATUS, pidMessageData[16][1]);

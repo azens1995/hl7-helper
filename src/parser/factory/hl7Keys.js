@@ -1,6 +1,6 @@
 const {
   FULL_NAME,
-  DO_BIRTH,
+  DOB,
   PHONE_NUMBER,
   EMAIL,
   PATIENT_ID,
@@ -29,7 +29,7 @@ const {
 function getOruR01Keys() {
   const patient = [
     FULL_NAME,
-    DO_BIRTH,
+    DOB,
     PATIENT_ID,
     MRN_NUMBER,
     STREET,
@@ -55,7 +55,7 @@ function getOruR01Keys() {
 function getAdtA01Keys() {
   const patient = [
     FULL_NAME,
-    DO_BIRTH,
+    DOB,
     PHONE_NUMBER,
     EMAIL,
     PATIENT_ID,

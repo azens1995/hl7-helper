@@ -8,7 +8,7 @@ const {
 } = require("../constant/app.constant");
 const {
   FULL_NAME,
-  DOB_BIRTH,
+  DOB,
   PATIENT_ID,
   MRN_NUMBER,
   STREET,
@@ -88,7 +88,7 @@ class OruR01Message {
       FULL_NAME,
       pidMessageData[5][0][2] + " " + pidMessageData[5][0][1][1]
     );
-    map.set(DOB_BIRTH, pidMessageData[7][1]);
+    map.set(DOB, pidMessageData[7][1]);
     map.set(PATIENT_ID, pidMessageData[3][0][1]);
     map.set(MRN_NUMBER, pidMessageData[3][0][5]);
     map.set(STREET, pidMessageData[11][0][1][1]);

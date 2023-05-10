@@ -1,6 +1,6 @@
 const {
   FULL_NAME,
-  DO_BIRTH,
+  DOB,
   PHONE_NUMBER,
   EMAIL,
   PATIENT_ID,
@@ -112,7 +112,7 @@ class AdtA01Message {
         " " +
         patientNameInfo[patientName.subfields.lastName]._text
     );
-    map.set(DO_BIRTH, doBirthInfo[doBirth.subfields.time]._text);
+    map.set(DOB, doBirthInfo[doBirth.subfields.time]._text);
     map.set(
       PHONE_NUMBER,
       phoneNumberInfo[phoneNumber.subfields.telePhoneNumber]._text

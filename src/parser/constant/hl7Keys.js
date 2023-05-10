@@ -1,6 +1,6 @@
 module.exports = {
   FULL_NAME: "fullName",
-  DO_BIRTH: "doBirth",
+  DOB: "dob",
   PHONE_NUMBER: "phoneNumber",
   EMAIL: "email",
   PATIENT_ID: "patientId",
