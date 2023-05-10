@@ -6,17 +6,17 @@ const { generateRandomNumber } = require("./random");
  *
  * @param {object} message - contains information about a message.
  */
-async function exportReport(message) {
+async function exportReport(message, fileName) {
   if (!message) {
     return;
   }
-  const { observationData, messageType: mshType } = message;
+  const { observationData } = message;
   if (!observationData) {
     return;
   }
 
   for (const observation of observationData) {
-    const folderName = `reports/${mshType}`;
+    const folderName = `reports/${fileName}`;
     if (!fs.existsSync(folderName)) {
       fs.mkdirSync(folderName);
     }
