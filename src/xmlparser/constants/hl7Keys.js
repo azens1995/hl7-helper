@@ -15,8 +15,4 @@ module.exports = {
   SENDER_FACILITY: "senderFacility",
   SENDER_DATE: "senderDate",
   MESSAGE_TYPE: "messageType",
-  ENCODING_TYPE: "encodingType",
-  TYPE_OF_DATA: "typeOfData",
-  DATA: "data",
-  RESULT_STATUS: "resultStatus",
 };
